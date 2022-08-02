@@ -1,0 +1,34 @@
+--Create a car parts store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, name TEXT, inventory INTEGER, location TEXT, price INTEGER);
+
+INSERT INTO store VALUES(1, "radiator", 3, "Engine Bay", 100.00);
+INSERT INTO store VALUES(2, "tire", 8, "Exterior", 60.00);
+INSERT INTO store VALUES(3, "radio", 2, "Interior", 40.00);
+INSERT INTO store VALUES(4, "AC", 2, "Engine Bay", 120.00);
+INSERT INTO store VALUES(5, "Steering Wheel", 5, "Interior", 20.00);
+INSERT INTO store VALUES(6, "Engine", 1, "Engine Bay", 600.00);
+INSERT INTO store VALUES(7, "Door", 6, "Exterior", 85.00);
+INSERT INTO store VALUES(8, "Battery", 10, "Engine Bay", 110.00);
+INSERT INTO store VALUES(9, "Seat Cover", 20, "Interior", 5.00);
+INSERT INTO store VALUES(10, "Speakers", 10, "Interior", 40.00);
+INSERT INTO store VALUES(11, "Spark Plugs", 20, "Engine Bay", 5.00);
+INSERT INTO store VALUES(12, "Spoiler", 2, "Exterior", 80.00);
+INSERT INTO store VALUES(13, "Rims", 8, "Exterior", 100.00);
+INSERT INTO store VALUES(14, "Lightbulbs", 50, "Interior", 1.00);
+INSERT INTO store VALUES(15, "Tint", 6, "Exterior", 20.00);
+
+--Display the database ordered by price.
+SELECT * FROM store 
+ORDER BY price asc;
+
+--What is the average price of the items located on the interior of the car?
+SELECT AVG(price) "Avg interior item price"
+FROM store
+WHERE location = "Interior";
+
+--Order each location by the sum of the current inventory in the store.
+SELECT location, SUM(inventory)
+FROM store 
+Group by location
+Order by inventory desc;
