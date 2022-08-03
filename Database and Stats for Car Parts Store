@@ -28,7 +28,7 @@ FROM store
 WHERE location = "Interior";
 
 --Order each location by the sum of the current inventory in the store.
-SELECT location, SUM(inventory)
+SELECT location, SUM(inventory) AS total_inventory
 FROM store 
 Group by location
 Order by inventory desc;
