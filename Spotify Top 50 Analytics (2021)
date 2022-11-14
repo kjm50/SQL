@@ -24,3 +24,13 @@ FROM BIT_DB.Spotifydata;
 SELECT AVG(danceability) as Danceability
 FROM BIT_DB.Spotifydata
 WHERE id < 11;
+
+--Calculate the average popularity for the artists in the Spotify data table. Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star”
+WITH pop_CTE AS(
+    SELECT artist_name, AVG(popularity) as avgPop
+    FROM Spotifydata
+    GROUP BY artist_name
+)
+SELECT artist_name, avgPop, 'TOP STAR' AS tag
+FROM pop_CTE
+WHERE avgPop >= 90;
